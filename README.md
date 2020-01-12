@@ -1,2 +1,0 @@
-# SmokeTargets
-Created with CodeSandbox
