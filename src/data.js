@@ -1,4 +1,4 @@
-[
+export const data = [
   {
     "target": "Hypoxanthine-guanine phosphoribosyltransferase",
     "commonName": "HPRT1",

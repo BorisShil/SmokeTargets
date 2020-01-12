@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import ReactDataGrid from "react-data-grid";
 import { Toolbar, Data, Filters } from "react-data-grid-addons";
-import data from './data';
+
 
 import "./styles.css";
+import {data} from "./data";
 
 const defaultColumnProperties = {
   filterable: true,
