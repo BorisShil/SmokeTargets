@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import ReactDataGrid from "react-data-grid";
 import { Toolbar, Data, Filters } from "react-data-grid-addons";
-import createRowData from "./createRowData";
+import data from './data';
 
 import "./styles.css";
 
 const defaultColumnProperties = {
   filterable: true,
+  resizable: true,
   width: 160
 };
 
@@ -20,57 +21,71 @@ const {
 } = Filters;
 const columns = [
   {
-    key: "id",
-    name: "ID",
-    filterRenderer: NumericFilter
+    key: "target",
+    name: "Target",
+    // filterRenderer: AutoCompleteFilter
   },
   {
-    key: "firstName",
-    name: "First Name",
+    key: "commonName",
+    name: "Common name",
     filterRenderer: AutoCompleteFilter
   },
   {
-    key: "lastName",
-    name: "Last Name",
+    key: "uniprotId",
+    name: "Uniprot ID",
     filterRenderer: AutoCompleteFilter
   },
   {
-    key: "jobTitle",
-    name: "Job Title",
-    filterRenderer: MultiSelectFilter
+    key: "chEmblId",
+    name: "ChEMBL ID",
+    filterRenderer: AutoCompleteFilter
+  },
+  // {
+  //   key: "Target Class",
+  //   name: "targetClass",
+  //   // filterRenderer: AutoCompleteFilter
+  // },
+  {
+    key: "probabilityOfActivity",
+    name: "Probability of activity",
+    // filterRenderer: NumericFilter
   },
   {
-    key: "jobArea",
-    name: "Job Area",
+    key: "probability",
+    name: "Probability*",
+    // filterRenderer: NumericFilter
+  },
+  {
+    key: "knownActives",
+    name: "Known actives (3D/2D)",
     filterRenderer: SingleSelectFilter
   },
   {
-    key: "jobType",
-    name: "Job Type"
+    key: "db",
+    name: "DB",
+    filterRenderer: SingleSelectFilter
   },
   {
-    key: "email",
-    name: "Email"
+    key: "pdb",
+    name: "PDB",
+    filterRenderer: SingleSelectFilter
   },
   {
-    key: "street",
-    name: "Street"
+    key: "compound",
+    name: "Compound",
+    filterRenderer: SingleSelectFilter
   },
   {
-    key: "zipCode",
-    name: "ZipCode"
+    key: "compoundSmiles",
+    name: "Compound SMILES",
+    filterRenderer: SingleSelectFilter
   },
   {
-    key: "date",
-    name: "Date"
+    key: "value",
+    name: "Value (Chemprot)",
+    // filterRenderer: NumericFilter
   },
-  {
-    key: "catchPhrase",
-    name: "Catch Phrase"
-  }
 ].map(c => ({ ...c, ...defaultColumnProperties }));
-
-const ROW_COUNT = 50;
 
 const handleFilterChange = filter => filters => {
   const newFilters = { ...filters };
@@ -112,4 +127,4 @@ function Example({ rows }) {
 }
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Example rows={createRowData(50)} />, rootElement);
+ReactDOM.render(<Example rows={data} />, rootElement);
